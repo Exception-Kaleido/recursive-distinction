@@ -1,0 +1,79 @@
+Generate-then-select provisional split audit
+50 paired seeds, 300 steps, role reversal at step 150
+Post-split selection window: 5
+Budgeted mode candidate budget: 15
+
+split_only
+  adaptation lag: 103.600 +/- 17.626
+  obsolete persistence: 47.613% +/- 2.044%
+  objecthood F1: 0.743 +/- 0.045
+  false stabilization: 61.935% +/- 7.453%
+  candidate count: 27.163 +/- 4.548
+  candidate churn: 7.680 +/- 2.996
+
+targeted_split
+  paired adaptation lag: +26.920 +/- 21.239
+  paired objecthood F1: -0.214 +/- 0.063
+  paired false stabilization: -18.993% +/- 7.794%
+  paired candidate count: -18.230 +/- 4.356
+  paired candidate churn: -7.040 +/- 2.932
+
+provisional_split
+  paired adaptation lag: +5.100 +/- 18.262
+  paired objecthood F1: -0.015 +/- 0.032
+  paired false stabilization: +7.915% +/- 5.277%
+  paired candidate count: -12.386 +/- 3.722
+  paired candidate churn: -6.100 +/- 2.922
+  parent survival time: 218.682 +/- 28.322
+  child survival rate: 84.000% +/- 10.265%
+
+provisional_split_plus_selection
+  paired adaptation lag: +4.600 +/- 17.259
+  paired obsolete persistence: +0.161% +/- 2.119%
+  paired objecthood F1: -0.004 +/- 0.031
+  paired false stabilization: +2.104% +/- 4.432%
+  paired candidate count: -14.852 +/- 4.016
+  paired candidate churn: -0.700 +/- 3.050
+  useful-candidate damage: 0.000%
+  parent survival time: 124.117 +/- 22.896
+  child survival rate: 41.683% +/- 7.868%
+  child win rate: 62.704% +/- 43.208%
+
+provisional_split_budgeted
+  paired adaptation lag: +8.080 +/- 16.753
+  paired obsolete persistence: -0.096% +/- 2.164%
+  paired objecthood F1: +0.007 +/- 0.030
+  paired false stabilization: +1.847% +/- 4.455%
+  paired candidate count: -15.195 +/- 4.076
+  paired candidate churn: +0.860 +/- 3.468
+  useful-candidate damage: 0.000%
+  parent survival time: 127.385 +/- 23.616
+  child survival rate: 40.544% +/- 7.912%
+  child win rate: 52.539% +/- 42.875%
+
+Incremental paired contrasts
+  selection versus provisional branching:
+    adaptation lag: -0.500 +/- 18.822
+    false stabilization: -5.811% +/- 3.378%
+    candidate count: -2.467 +/- 0.599
+    objecthood F1: +0.010 +/- 0.029
+
+  budget versus selection:
+    adaptation lag: +3.480 +/- 10.680
+    false stabilization: -0.258% +/- 1.056%
+    candidate count: -0.342 +/- 0.234
+    objecthood F1: +0.012 +/- 0.020
+
+  selection versus precision-first targeted split:
+    adaptation lag: -22.320 +/- 18.354
+    false stabilization: +21.097% +/- 6.785%
+    candidate count: +3.377 +/- 0.642
+    objecthood F1: +0.209 +/- 0.058
+
+Interpretation
+  Generate-then-select preserves the fast split adaptation and objecthood F1
+  while greatly reducing candidate count and avoiding evaluator-confirmed
+  useful-candidate damage. Selection corrects most of the false-stabilization
+  increase caused by provisional branching alone, but does not reduce false
+  stabilization below split_only. The candidate budget adds only a small count
+  reduction at the tested budget of 15.

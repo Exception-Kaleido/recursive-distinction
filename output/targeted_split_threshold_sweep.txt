@@ -1,0 +1,28 @@
+Targeted split threshold sweep
+20 paired seeds per condition, 27 targeted configurations plus split_only.
+
+Best adaptation-preserving region
+  low threshold, evidence window 1
+  lag difference vs split_only ranged from -3.800 to +2.250 steps depending on
+  parent decay.
+  Candidate count fell by about 11.2 to 11.6 and false stabilization fell by
+  about 11.8 to 20.6 percentage points.
+  Wrong-target rate did not improve and useful-candidate damage appeared when
+  parent decay was enabled.
+
+Best precision region
+  medium threshold, evidence window 3
+  target precision was about 94.6% to 95.0%, versus 70.2% for split_only.
+  Wrong-target rate fell by about 21.6 to 21.9 percentage points.
+  Adaptation lag increased by about 28.3 to 32.6 steps and target recall fell
+  to about 29.9% to 31.9%.
+
+Strict region
+  medium/high thresholds with evidence window 5 produced very low churn and
+  false stabilization, but adaptation lag increased by roughly 36 to 38 steps
+  and obsolete-candidate hit rates collapsed.
+
+Conclusion
+  The sweep identifies a precision-plasticity frontier, not a configuration
+  that simultaneously preserves split_only adaptation and improves targeting,
+  false stabilization, and proliferation.

@@ -1,0 +1,19 @@
+sharp paired suite: 50 seeds, 300 steps, role reversal at 150
+
+strength  adaptation lag (95% CI)  obsolete persistence (95% CI)
+0.00      108.300 +/- 15.343       58.951% +/- 4.280%
+0.10      110.040 +/- 14.716       56.035% +/- 4.663%
+0.25      111.740 +/- 15.384       56.624% +/- 5.054%
+0.50       96.840 +/- 16.576       57.047% +/- 4.902%
+1.00      101.080 +/- 16.503       57.173% +/- 5.103%
+
+Paired differences from strength 0.0:
+0.10 lag +1.740 +/- 12.934; obsolete -2.916% +/- 4.238%
+0.25 lag +3.440 +/- 11.351; obsolete -2.327% +/- 4.756%
+0.50 lag -11.460 +/- 17.652; obsolete -1.904% +/- 4.677%
+1.00 lag -7.220 +/- 16.319; obsolete -1.778% +/- 5.307%
+
+Conclusion:
+Nonzero re-entry did not produce a statistically clear reduction in adaptation
+lag or obsolete candidate persistence. Strength 0.5 showed the largest mean lag
+reduction, but the paired 95% confidence interval included zero.

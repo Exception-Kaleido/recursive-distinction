@@ -1,0 +1,71 @@
+Candidate revision decomposition audit
+50 paired seeds, 300 steps, role reversal at step 150
+
+Formation is enabled in every condition. Feature and policy re-entry are
+disabled so only candidate revision operations differ.
+
+no_candidate_revision
+  adaptation lag: 146.440 +/- 4.884
+  obsolete persistence: 49.703% +/- 0.473%
+  objecthood F1: 0.365 +/- 0.077
+  false stabilization: 25.386% +/- 8.584%
+  candidate count: 7.559 +/- 0.264
+  candidate churn: 0.060 +/- 0.118
+
+confidence_only
+  paired adaptation lag: +1.760 +/- 3.450
+  paired obsolete persistence: +0.249% +/- 0.465%
+  paired objecthood F1: -0.175 +/- 0.059
+  paired false stabilization: -8.073% +/- 4.719%
+
+split_only
+  paired adaptation lag: -42.840 +/- 17.176
+  paired obsolete persistence: -2.090% +/- 2.064%
+  paired objecthood F1: +0.378 +/- 0.085
+  paired false stabilization: +36.550% +/- 9.154%
+  paired candidate count: +19.604 +/- 4.406
+  paired candidate churn: +7.620 +/- 2.987
+
+suppression_only
+  paired adaptation lag: -8.380 +/- 9.893
+  paired obsolete persistence: +0.174% +/- 0.561%
+  paired objecthood F1: +0.170 +/- 0.084
+  paired false stabilization: +8.875% +/- 6.448%
+
+split_plus_suppression
+  paired adaptation lag: -28.260 +/- 13.721
+  paired obsolete persistence: -2.412% +/- 1.692%
+  paired objecthood F1: +0.377 +/- 0.082
+  paired false stabilization: +29.778% +/- 8.561%
+
+full_candidate_revision
+  paired adaptation lag: -30.160 +/- 15.451
+  paired obsolete persistence: -2.058% +/- 1.645%
+  paired objecthood F1: +0.361 +/- 0.092
+  paired false stabilization: +23.134% +/- 7.970%
+
+Incremental paired contrasts
+  suppression added to split:
+    adaptation lag: +14.580 +/- 13.971
+    obsolete persistence: -0.322% +/- 2.183%
+    objecthood F1: -0.002 +/- 0.043
+    false stabilization: -6.772% +/- 6.304%
+    candidate count: -10.754 +/- 3.696
+    candidate churn: +3.260 +/- 3.120
+
+  full mechanisms added to split plus suppression:
+    adaptation lag: -1.900 +/- 18.129
+    obsolete persistence: +0.353% +/- 2.159%
+    objecthood F1: -0.016 +/- 0.039
+    false stabilization: -6.644% +/- 4.752%
+    candidate count: -1.104 +/- 0.900
+    candidate churn: +2.700 +/- 3.802
+
+Interpretation
+  Split is the component responsible for the adaptation-lag reduction.
+  Suppression is not required for the observed obsolete-persistence reduction
+  and adds no statistically clear incremental improvement to that metric.
+  Suppression instead reduces prototype proliferation and false stabilization,
+  while slowing adaptation relative to split-only. Confidence-only reduces
+  false stabilization but harms objecthood F1. Recovery-slope differences are
+  inconclusive, and destabilization precision remains low.

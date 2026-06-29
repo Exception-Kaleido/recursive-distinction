@@ -1,0 +1,47 @@
+Mechanism-level re-entry audit
+50 paired seeds, 300 steps, role reversal at step 150
+
+no_reentry
+  adaptation lag: 146.440 +/- 4.884
+  obsolete persistence: 49.703% +/- 0.473%
+  objecthood F1: 0.365 +/- 0.077
+
+feature_reentry
+  feature-weight change: 0.392 +/- 0.098
+  selected-distinction change: 49.205% +/- 12.242%
+  paired adaptation lag difference: -4.180 +/- 7.657
+  paired obsolete difference: 0.165% +/- 0.475%
+  objecthood F1: 0.630 +/- 0.046
+
+candidate_reentry
+  candidate revisions: 20.580 +/- 6.222
+  paired policy distribution difference: -3.040% +/- 3.469%
+  paired adaptation lag difference: -30.160 +/- 15.451
+  paired obsolete difference: -2.058% +/- 1.645%
+  objecthood F1: 0.726 +/- 0.048
+  paired recovery-slope difference: 0.025 +/- 0.079
+
+policy_reentry
+  paired policy distribution difference: -1.040% +/- 5.624%
+  paired adaptation lag difference: 0.640 +/- 7.631
+  paired obsolete difference: 0.436% +/- 0.532%
+  objecthood F1: 0.326 +/- 0.085
+
+full_reentry
+  feature-weight change: 0.249 +/- 0.082
+  selected-distinction change: 50.019% +/- 12.242%
+  candidate revisions: 11.740 +/- 4.430
+  paired policy distribution difference: 1.200% +/- 5.637%
+  paired adaptation lag difference: -25.320 +/- 15.947
+  paired obsolete difference: -0.198% +/- 1.845%
+  objecthood F1: 0.763 +/- 0.053
+  paired recovery-slope difference: -0.022 +/- 0.058
+
+Interpretation
+  Candidate formation is enabled in every mode, so no_reentry, feature_reentry,
+  and policy_reentry no longer have objecthood F1 = 0 by construction.
+  Candidate revision remains the only isolated target with a paired adaptation
+  lag 95% confidence interval below zero. It also has a modest
+  obsolete-persistence reduction. Full re-entry has a smaller lag improvement
+  and its interval also excludes zero, but it does not improve obsolete
+  persistence.

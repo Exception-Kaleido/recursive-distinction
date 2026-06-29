@@ -1,0 +1,61 @@
+Targeted split audit
+50 paired seeds, 300 steps, role reversal at step 150
+Selected adaptation-preserving sweep setting: low threshold, evidence window 1,
+parent decay none.
+
+split_only
+  adaptation lag: 103.600 +/- 17.626
+  obsolete persistence: 47.613% +/- 2.044%
+  objecthood F1: 0.743 +/- 0.045
+  false stabilization: 61.935% +/- 7.453%
+  candidate count: 27.163 +/- 4.548
+  candidate churn: 7.680 +/- 2.996
+  target precision: 73.823% +/- 5.517%
+  target recall: 82.000% +/- 10.757%
+  wrong-target rate: 26.177% +/- 5.517%
+  obsolete-candidate hit rate: 66.000% +/- 13.264%
+
+targeted_split low/w1/none
+  paired adaptation lag: +10.880 +/- 19.618
+  paired obsolete persistence: +1.416% +/- 2.549%
+  paired objecthood F1: -0.089 +/- 0.051
+  paired false stabilization: -4.774% +/- 5.878%
+  paired candidate count: -12.780 +/- 3.834
+  paired candidate churn: -5.380 +/- 2.743
+  target precision: 63.409% +/- 5.781%
+  target recall: 61.066% +/- 8.732%
+  paired wrong-target rate: +10.414% +/- 5.745%
+  useful-candidate damage: 0.000%
+  obsolete-candidate hit rate: 25.489% +/- 7.539%
+
+targeted_split_plus_suppression low/w1/none
+  paired adaptation lag: +24.540 +/- 19.907
+  paired obsolete persistence: +1.716% +/- 2.256%
+  paired objecthood F1: -0.070 +/- 0.048
+  paired false stabilization: -8.762% +/- 6.604%
+  paired candidate count: -17.469 +/- 4.290
+  paired candidate churn: -0.160 +/- 3.556
+  paired wrong-target rate: +4.338% +/- 6.056%
+  useful-candidate damage: 21.982% +/- 5.707%
+
+Precision-oriented setting: medium threshold, evidence window 3, parent decay
+none.
+
+targeted_split medium/w3/none
+  paired adaptation lag: +26.920 +/- 21.239
+  paired obsolete persistence: +1.469% +/- 2.240%
+  paired objecthood F1: -0.214 +/- 0.063
+  paired false stabilization: -18.993% +/- 7.794%
+  paired candidate count: -18.230 +/- 4.356
+  paired candidate churn: -7.040 +/- 2.932
+  target precision: 90.098% +/- 7.582%
+  target recall: 30.490% +/- 7.182%
+  paired wrong-target rate: -15.810% +/- 8.458%
+  obsolete-candidate hit rate: 14.200% +/- 6.361%
+
+Interpretation
+  No tested threshold dominates split_only. Low/w1/none largely preserves lag
+  and controls proliferation but worsens targeting precision. Medium/w3/none
+  improves precision, false stabilization, and proliferation but loses
+  adaptation speed, recall, obsolete hits, and objecthood F1. Suppression adds
+  useful-candidate damage and further slows adaptation.
