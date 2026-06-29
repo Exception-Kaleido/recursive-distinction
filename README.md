@@ -1,5 +1,7 @@
 # Recursive Distinction v0.1
 
+For AI-assisted reading, start with [`AI_CONTEXT.md`](AI_CONTEXT.md), then read this README.
+
 RD-World is a minimal grid-world experiment in which an agent develops
 **objecthood candidates from recurring perturbation-action-outcome traces**.
 The environment contains walls, food, hazards, and food-like decoys, but those
