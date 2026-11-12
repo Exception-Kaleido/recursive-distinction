@@ -1,76 +1,116 @@
-# Recursive Distinction (RD-World) · v0.1
+# Recursive Distinction (RD) · RD-World v0.1
 
-**Status:** Exploratory research prototype · historical experiments frozen in June 2026 · **results under re-evaluation following a November 2026 audit**
+**An exploratory attempt to translate a philosophical intuition about distinction, trace, and re-entry into an executable computational experiment.**
 
-RD-World investigates whether an agent can form and revise *objecthood candidates* from recurring sensorimotor interactions **without receiving semantic object-class labels**. This is a small, rule-based grid-world experiment, not a general-intelligence system or a demonstration of consciousness.
+**Project status:** June 2026 research prototype · historical results preserved · November 2026 audit identified implementation and measurement limitations. [Read the audit notice](docs/AUDIT_STATUS.md).
 
-> **Research question:** Can recurring distinction–action–outcome traces support revisable predictive object representations when visually ambiguous entities change their causal roles?
+## The question that started this project
 
-**Read first:** [Audit status](docs/AUDIT_STATUS.md) · [Historical research summary](docs/V0_1_SUMMARY.md) · [Historical results](docs/RESULTS.md) · [Hypotheses](docs/HYPOTHESES.md) · [Glossary](docs/GLOSSARY.md) · [AI context](AI_CONTEXT.md) · [Original June README](docs/HISTORICAL_README_2026_06.md)
+What if a distinction does not merely identify something already given, but leaves a trace that changes how subsequent distinctions are made?
 
-## Motivation
-
-Providing an agent with labels such as `food`, `wall`, or `decoy` would presuppose the categories under investigation. RD-World instead exposes numerical local observations and the consequences of actions. The environment and evaluator retain hidden entity identities, but the agent does not receive their names.
-
-This is **not** an experiment in unconstrained ontology discovery: features, actions, viability signals, candidate structures, and update rules are engineered in advance. The question is whether predictive prototypes can be maintained and revised under conflicting evidence.
-
-## Environment and mechanism
-
-The environment is a discrete 2D grid containing walls, hazards, food, and visually similar decoys. Observations include RGB and relative position. Interactions may produce movement resistance and changes in viability. Some evaluations introduce delayed outcomes and reverse the consequences of food-like and decoy-like entities without changing their visual distributions.
-
-An interaction generates a trace:
+The starting intuition can be expressed as:
 
 ```text
-local distinctions + action -> movement resistance + viability change
+distinction -> trace -> re-entry into future distinction
+       ^                          |
+       |__________________________|
 ```
 
-The implementation combines:
+If distinctions repeatedly alter the conditions of subsequent distinctions, could relatively stable, revisable organizations emerge from that process?
 
-1. **Trace memory:** store observation–action–outcome records.
-2. **Boundary re-entry:** adjust feature weighting from predictive contrasts in traces.
-3. **Objecthood candidates:** represent provisional sensorimotor prototypes linking observations, actions, and expected outcomes.
-4. **Conflict-driven revision:** weaken, split, merge, or obsolete candidates when predictions fail.
-5. **Provisional branching and selection:** collect evidence before committing to a new candidate.
-6. **Calibrated activation:** distinguish candidate existence from its influence on policy.
+**Recursive Distinction (RD)** names this proposed generative process. It is a *research hypothesis*, not an established general principle. The purpose of RD-World v0.1 was to take this abstract intuition out of philosophical discussion and make some of its consequences computationally explicit, observable, and open to failure.
 
-These are handcrafted computational mechanisms. *Objecthood* here denotes revisable predictive organization, not proof of semantic object discovery.
+The first experimental target was **objecthood**: not a metaphysical claim about what an object ultimately is, but an operational question about how an agent might develop persistent, action-relevant predictive candidates from its own interactions.
 
-## Experiments and historical observations
+> **Central research question:** Can traces of distinctions, actions, and outcomes re-enter an agent's subsequent processing so that object-like predictive structures form, persist, and change when their predictions fail?
 
-The repository includes fixed, random, trace-based, feature-re-entry, candidate-revision, and policy-re-entry comparisons. Subsequent ablations examine confidence updates, splitting, suppression, evidence-window selection, and calibrated activation.
+## From intuition to operational hypothesis
 
-The original experiments reported the following **historical paired comparisons**, generally over 50 seeds:
+The project makes a deliberate translation from conceptual terms to specific computational operations:
 
-| Historical contrast | Originally reported paired difference | Interpretation after audit |
+| Conceptual idea | RD-World v0.1 operationalization |
+|---|---|
+| Distinction | Selected numerical differences in a local sensory context |
+| Action | A choice that probes the environment |
+| Trace | A stored relation among sensory context, action, resistance, and viability change |
+| Re-entry | Stored evidence changes later feature weighting or candidate organization |
+| Stabilization | Repeated predictive support increases a candidate's persistence and influence |
+| Revision | Prediction conflict can weaken, branch, select, merge, or obsolete candidates |
+| Objecthood | A revisable, re-identifiable sensorimotor prediction prototype |
+
+These correspondences are **design decisions**, not proofs that the philosophical concepts have been fully captured. In particular, the agent receives engineered features, actions, and viability feedback. Semantic labels such as `food` and `decoy` are hidden from the agent, but the environment and evaluation criteria are handcrafted.
+
+The experiment asks whether the proposed feedback structure has useful observable consequences *within these constraints*.
+
+## The computational experiment
+
+RD-World is a small, rule-based 2D grid world containing walls, hazards, food, and visually similar decoys. The agent observes numerical RGB values and relative positions, acts, and experiences outcomes such as movement resistance and viability change.
+
+Some experiments make outcomes arrive after a delay. In role-reversal experiments, visually similar entities exchange their viability effects while retaining their appearance. An old predictive distinction may therefore become misleading even though the sensory input appears familiar.
+
+Each encounter can leave a trace:
+
+```text
+local sensory distinction + action -> resistance + viability change
+```
+
+The implementation contains:
+
+1. **Trace memory** (`rd_world/trace_field.py`): records interaction evidence, including temporal associations.
+2. **Feature-level re-entry** (`rd_world/boundary.py`): updates which sensory differences receive weight.
+3. **Objecthood candidates** (`rd_world/objecthood.py`): maintains predictive sensorimotor prototypes.
+4. **Candidate-level re-entry**: changes the organization of candidates when evidence conflicts with their predictions.
+5. **Branching, selection, and activation**: separates the existence of an alternative candidate from the evidence required for it to influence behavior.
+6. **Evaluation and ablations**: compares mechanisms under matched simulated conditions.
+
+This is a testbed for a proposed mechanism, not a system that autonomously invents an unrestricted ontology.
+
+## How the research question changed during experimentation
+
+The project did not begin with the final candidate lifecycle as a predetermined answer.
+
+**Initial emphasis — feature-level re-entry.** The early computational interpretation focused on whether traces could change the salience of sensory features through `BoundaryGate`. In the historical mechanism comparisons, feature-weight changes alone did not show a clear adaptation-latency advantage.
+
+**Revised emphasis — candidate-level re-entry.** Attention shifted to whether the *organization of existing predictive candidates* could be revised after contradictory outcomes. Historical experiments showed larger adaptation differences in candidate-revision conditions, but a later audit identified a duplicate-evidence defect affecting the interpretation of those differences.
+
+**Subsequent design exploration — generation, selection, commitment.** Candidate revision was decomposed into splitting, provisional branching, evidence-window selection, and calibrated activation:
+
+```text
+conflict -> provisional alternatives -> evidence-based selection -> graded activation
+```
+
+This sequence reflects the explored design trajectory, **not** a universally validated mechanism. The experiments exposed trade-offs among rapid revision, candidate proliferation, premature stabilization, and delayed commitment.
+
+The main research artifact is therefore not only a particular performance number. It is the attempt to turn a generative intuition into an explicit mechanism, distinguish competing implementations, and revise the hypothesis in response to experimental outcomes.
+
+## What was observed — and what remains uncertain
+
+The original implementation reported the following **historical paired comparisons** (generally 50 seeds):
+
+| Historical comparison | Reported paired difference | Current interpretation |
 |---|---:|---|
-| Candidate re-entry vs no re-entry: adaptation latency | −30.160 ± 15.451 steps | Original-implementation result; corrected causal attribution pending |
-| Split-only vs formation-only: adaptation latency | −42.840 ± 17.176 steps | Sensitive to duplicate founding-trace updates |
-| Split-only vs formation-only: objecthood F1 | +0.378 ± 0.085 | Original metric and implementation; corrected validation pending |
-| Calibrated activation vs provisional selection: false stabilization | −10.382 ± 4.544 percentage points | A reduction persisted in a limited sensitivity test, not a complete corrected suite |
+| Candidate re-entry vs no re-entry: adaptation lag | −30.160 ± 15.451 steps | Historical implementation; isolated causal contribution requires revalidation |
+| Split-only vs formation-only: adaptation lag | −42.840 ± 17.176 steps | Strongly affected by the founding-trace update issue |
+| Split-only vs formation-only: objecthood F1 | +0.378 ± 0.085 | Historical metric and implementation; corrected validation pending |
+| Calibrated activation vs provisional selection: false stabilization | −10.382 ± 4.544 percentage points | Reduction persisted in a limited sensitivity check, not a complete corrected study |
 
-The `±` values are historical paired 95% confidence-interval half-widths, not standard deviations. Comparisons from different experiment versions must not be combined as one controlled study. See [the historical results](docs/RESULTS.md) for complete tables.
+The `±` values are historical paired 95% confidence-interval half-widths, not standard deviations. Results from different code and metric versions should not be treated as one uniform experiment.
 
-## November 2026 audit — known limitations
+**Important November 2026 audit finding:** newly split candidates can count their founding trace twice. In a limited single-update sensitivity test, the split-only adaptation-lag contrast against formation-only changed from **−42.840 ± 17.176** to **−10.300 ± 10.350 steps**. This substantially weakens the original causal interpretation, without establishing that the actual splitting effect is zero.
 
-**The historical source code and output artifacts remain uncorrected.** A subsequent audit identified:
+Other audit findings include a rolling-mean versus consecutive-step adaptation-criterion mismatch, phase-inappropriate false-positive counters after role reversal, censored non-adaptation latencies, and incomplete denominator/coverage handling. **The source code and historical output artifacts have not yet been corrected.**
 
-- **Duplicate founding-trace evidence:** after a candidate split, a newly initialized child may incorporate its founding observation a second time. In a limited single-update sensitivity test, the split-only adaptation-latency contrast changed from **−42.840 ± 17.176** to **−10.300 ± 10.350 steps** against formation-only. The true isolated effect is not established; this does not prove the effect is zero.
-- **Adaptation criterion mismatch:** documentation describes five consecutive acceptable steps, but implementation evaluates a five-step rolling mean.
-- **Post-reversal metric semantics:** some decoy false-positive counters use original entity kind even after causal roles reverse.
-- **Censoring:** non-adapting runs are assigned the maximum latency; success and censoring rates must accompany latency comparisons.
-- **Coverage:** zero-denominator rates may be reported as zero, and some candidate-damage measurements cover restricted logged events.
-- **Version/configuration drift:** historical experiments differ in code, metric definitions, and seed ranges; precise reproduction requires explicit manifests and per-seed records.
+See [November audit status](docs/AUDIT_STATUS.md), [historical results](docs/RESULTS.md), [historical hypotheses](docs/HYPOTHESES.md), and [original June README](docs/HISTORICAL_README_2026_06.md). Historical conclusions are preserved as a record of what was believed at the time, not endorsed as corrected causal findings.
 
-**The original strong claim that splitting itself accounts for the full measured adaptation improvement is not established by the current evidence.** Corrected ablations and independent evaluation are needed. The [audit status](docs/AUDIT_STATUS.md) provides a concise record.
+## What this work does not establish
 
-## Scope and non-claims
+- It does not demonstrate that Recursive Distinction is a universal generative principle.
+- It does not establish unconstrained object discovery: features, actions, viability, thresholds, and evaluation targets were engineered.
+- It does not demonstrate consciousness, selfhood, worldhood, AGI, or biological plausibility.
+- It does not establish generalization beyond the tested grid-world tasks or superiority over all reinforcement-learning, clustering, or latent-cause approaches.
+- It does not establish equivalence merely because a confidence interval includes zero.
 
-- Semantic class labels are hidden from the agent, but engineered numerical features, action choices, and viability feedback are provided.
-- The simulation uses rule-based prototypes and policies, not deep learning.
-- Hidden evaluator labels and objecthood F1 are operational proxies, not general tests of object discovery.
-- Generalization beyond the tested grid, role reversals, and delayed-outcome settings has not been established.
-- No claims are made about consciousness, selfhood, AGI, biological plausibility, or superiority to all RL or latent-cause baselines.
-- A confidence interval containing zero does not demonstrate equivalence.
+The distinction between **conceptual motivation**, **implemented mechanism**, and **empirically supported conclusion** is essential to interpreting this project.
 
 ## Run the historical implementation
 
@@ -85,40 +125,37 @@ python -m rd_world.cli --mode candidate-revision --steps 300 --change-step 150 -
 python -m rd_world.cli --mode calibrated-activation --steps 300 --change-step 150 --runs 50 --selection-window 5 --validation-threshold high --activation-threshold high --activation-delay 5 --candidate-budget 15
 ```
 
-For visualization:
+Optional visualization dependency:
 
 ```bash
 python -m pip install 'matplotlib>=3.7'
 ```
 
-These commands execute the **historical, uncorrected implementation**. Reproducing specific archived numbers may require an experiment-specific seed range. Passing existing tests does not resolve the audit findings.
+These commands run the historical, uncorrected implementation. Archived numerical results may depend on experiment-specific seed ranges. Existing tests passing would not resolve the audit findings.
 
-## Repository map
+## Documentation and code map
 
-| Path | Role |
-|---|---|
-| `rd_world/world.py` | Grid dynamics and numeric observations |
-| `rd_world/trace_field.py` | Trace storage and temporal association |
-| `rd_world/boundary.py` | Feature weighting and re-entry |
-| `rd_world/objecthood.py` | Candidate formation, revision, and lifecycle |
-| `rd_world/policy.py` | Candidate-informed action selection |
-| `rd_world/metrics.py` | Operational evaluation |
-| `rd_world/*validation.py` | Experiments and ablations |
-| `rd_world/cli.py` | Command-line entry point |
-| `output/` | Historical figures and experiment artifacts |
-| `docs/` | Research documents and audit notice |
+- [Original research framing / AI context](AI_CONTEXT.md) — includes the initial distinction–trace–re-entry formulation.
+- [Glossary](docs/GLOSSARY.md) — operational meanings of the concepts.
+- [Historical hypotheses](docs/HYPOTHESES.md) and [results](docs/RESULTS.md) — experimental progression and recorded evidence.
+- [Historical research summary](docs/V0_1_SUMMARY.md) — original interpretation and proposed extensions.
+- [Audit status](docs/AUDIT_STATUS.md) — limitations identified after the historical experiments.
+- [Archived June README](docs/HISTORICAL_README_2026_06.md) — preserved original project documentation.
+- `rd_world/world.py` — environment and observations.
+- `rd_world/boundary.py`, `trace_field.py`, `objecthood.py`, `policy.py` — mechanisms.
+- `rd_world/metrics.py`, `*validation.py`, `cli.py` — evaluation and execution.
+- `output/` — historical experimental artifacts.
 
-## Next steps
+## Next research steps
 
-1. Specify and test whether a founding trace contributes once or receives a documented pseudo-count.
-2. Align adaptation criteria and post-reversal metrics with their definitions.
-3. Report adaptation success, censoring, valid denominators, and uncertainty.
-4. Rerun matched ablations from one fixed commit with seed manifests and per-seed outputs.
-5. Test independent environments and stronger external baselines.
-6. Publish corrected, versioned results separately from the historical record.
+1. Define and test a consistent founding-trace update contract.
+2. Correct adaptation and phase-sensitive metrics; report censoring, valid denominators, and coverage.
+3. Rerun matched ablations with a fixed commit, explicit seed manifests, and per-seed outputs.
+4. Test whether re-entry offers benefits beyond simpler predictive-memory and latent-cause baselines.
+5. Examine whether the proposed distinction–trace–re-entry structure scales to richer environments and more persistent relations, without assuming that it must.
 
 ## Authorship and usage
 
-RD-World was developed as an independent research project with Codex-assisted programming. This statement does not establish a precise allocation of design, implementation, and verification contributions.
+RD-World was developed as an independent research project with Codex-assisted programming. The precise division of conceptual, implementation, and verification contributions is not established by this statement alone.
 
-**License:** No open-source license is granted in this repository. Public visibility alone does not authorize general redistribution, modification, or commercial reuse beyond rights provided by applicable law and GitHub's Terms of Service. Third-party dependencies retain their own licenses.
+**License:** No open-source license is granted by this repository. Public visibility does not by itself authorize general modification, redistribution, or commercial reuse beyond applicable law and GitHub's Terms of Service. Third-party dependencies retain their own licenses.
