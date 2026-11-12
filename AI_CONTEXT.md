@@ -1,5 +1,7 @@
 # AI Context: Recursive Distinction v0.1
 
+> **Historical AI reading context (June 2026): the claim that splitting improves adaptation is under re-evaluation following a November 2026 code/metric audit. See [audit status](docs/AUDIT_STATUS.md) and [current README](README.md).**
+
 ## One-sentence summary
 
 This is a frozen toy experiment studying Recursive Distinction: how distinction-trace-reentry dynamics can stabilize, revise, split, and obsolete label-free objecthood candidates.
