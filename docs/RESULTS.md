@@ -1,5 +1,7 @@
 # RD-World v0.1 Results
 
+> **Historical results (June 2026): values and causal interpretations below predate the November 2026 audit. Duplicate founding-trace updates and metric-definition mismatches were identified; the original splitting effect cannot be treated as an isolated corrected causal estimate. See [audit status](AUDIT_STATUS.md) and [current README](../README.md).**
+
 ## Experimental scope
 
 The consolidated audits use a rule-based agent in a non-stationary,
