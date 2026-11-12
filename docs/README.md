@@ -1,5 +1,7 @@
 # RD-World Research Docs
 
+> **The documents linked below preserve the original June 2026 interpretation. Their stronger causal claims predate the November audit; see [audit status](AUDIT_STATUS.md) and [current README](../README.md).**
+
 - [GLOSSARY.md](GLOSSARY.md): operational definitions for Recursive
   Distinction, objecthood, re-entry, candidate lifecycle, and metrics.
 - [HYPOTHESES.md](HYPOTHESES.md): frozen v0.1 hypotheses, status, evidence,

@@ -1,5 +1,7 @@
 # RD-World v0.1 Hypotheses
 
+> **Historical hypothesis classifications (June 2026): supported/unsupported statuses describe the original implementation and should not be read as corrected causal findings. See [audit status](AUDIT_STATUS.md) and [current README](../README.md).**
+
 ## Status vocabulary
 
 - **Supported**: the relevant paired 95% confidence interval excludes zero in

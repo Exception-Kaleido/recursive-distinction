@@ -1,5 +1,7 @@
 # RD-World v0.1 Research Summary
 
+> **Historical summary (June 2026): its strongest causal claim is under re-evaluation after the November 2026 audit. This document is preserved as the original interpretation, not the current validated conclusion. See [audit status](AUDIT_STATUS.md) and [current README](../README.md).**
+
 ## Core conclusion
 
 RD-World v0.1 supports one strong, narrow claim:
